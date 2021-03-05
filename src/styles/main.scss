@@ -1,0 +1,299 @@
+@import '../../node_modules/normalize-scss/sass/normalize';
+@include normalize();
+
+$font: 'Roboto', sans-serif;
+
+$body-bg: linear-gradient(90deg, rgba(11,11,11,0.7824171905090161) 0%, rgba(133,131,128,1) 0%, rgba(23,20,18,1) 100%);
+$field-background: white;
+$chip-text-color: white;
+$final-screen-background: rgba(255, 255, 255, 0.75);
+$buttons-color: lightskyblue;
+$buttons-hover-color: rgb(38, 166, 245);
+$moves-counter-timer-background: lightgray;
+
+$chip-font-size-desktop: 50px;
+$chip-font-size-tablet: 35px;
+$chip-font-size-mobile: 16px;
+$final-screen-message-font-size-desktop: 55px;
+$final-screen-message-font-size-tablet: 45px;
+$final-screen-message-font-size-mobile: 25px;
+$buttons-font-size-desktop: 20px;
+$buttons-font-size-tablet: 16px;
+$buttons-font-size-mobile: 12px;
+$moves-counter-font-size-desktop: 20px;
+$moves-counter-font-size-tablet: 16px;
+$moves-counter-font-size-mobile: 12px;
+$timer-font-size-desktop: 20px;
+$timer-font-size-tablet: 16px;
+$timer-font-size-mobile: 12px;
+$final-screen-moves-timer-font-size-desktop: 25px;
+$final-screen-moves-timer-font-size-tablet: 20px;
+$final-screen-moves-timer-font-size-mobile: 16px;
+
+$field-size-desktop: 700px;
+$field-size-tablet: 500px;
+$field-size-mobile: 300px;
+$control-panel-height-desktop: 50px;
+$control-panel-height-tablet: 40px;
+$control-panel-height-mobile: 30px;
+$buttons-width-desktop: 150px;
+$buttons-width-tablet: 120px;
+$buttons-width-mobile: 90px;
+$buttons-height-desktop: 35px;
+$buttons-height-tablet: 30px;
+$buttons-height-mobile: 20px;
+$moves-counter-width-desktop: 65px;
+$moves-counter-width-tablet: 60px;
+$moves-counter-width-mobile: 30px;
+$moves-counter-height-desktop: 35px;
+$moves-counter-height-tablet: 30px;
+$moves-counter-height-mobile: 20px;
+$timer-width-desktop: 130px;
+$timer-width-tablet: 120px;
+$timer-width-mobile: 70px;
+$timer-height-desktop: 35px;
+$timer-height-tablet: 30px;
+$timer-height-mobile: 20px;
+
+$gap: 4px;
+
+
+@mixin center-content {
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  @include center-content;
+  height: 100vh;
+  width: 100vw;
+  background: $body-bg;
+  font-family: $font;
+}
+
+.control-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $gap;
+  width: $field-size-desktop;
+  height: $control-panel-height-desktop;
+  background: white;
+}
+
+.field {
+  display: grid;
+  @include center-content;
+  gap: $gap;
+  width: $field-size-desktop;
+  height: $field-size-desktop;
+  background: $field-background;
+  padding: $gap;
+}
+
+.chip {
+  display: flex;
+  @include center-content;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  color: $chip-text-color;
+  font-size: $chip-font-size-desktop;
+  font-weight: 900;
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+}
+
+.empty-chip {
+  z-index: 0;
+  opacity: 0;
+  text-shadow: none;
+}
+
+.btn-container,
+.tm-container {
+  display: flex;
+  gap: $gap;
+}
+
+.autocomplete-button,
+.new-game-button {
+  font-family: $font;
+  font-size: $buttons-font-size-desktop;
+  width: $buttons-width-desktop;
+  height: $buttons-height-desktop;
+  border: none;
+  background-color: $buttons-color;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: $buttons-hover-color;
+  }
+  &:disabled:hover {
+    background-color: $buttons-color;
+  }
+}
+
+.moves-counter {
+  display: flex;
+  @include center-content;
+  width: $moves-counter-width-desktop;
+  height: $moves-counter-height-desktop;
+  font-size: $moves-counter-font-size-desktop;
+  background: $moves-counter-timer-background;
+  user-select: none;
+}
+
+.timer {
+  display: flex;
+  @include center-content;
+  width: $timer-width-desktop;
+  height: $timer-height-desktop;
+  font-size: $timer-font-size-desktop;
+  background: $moves-counter-timer-background;
+  user-select: none;
+}
+
+.final-screen {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  @include center-content;
+  width: $field-size-desktop;
+  height: $field-size-desktop;
+  background: $final-screen-background;
+}
+
+.final-screen__message {
+  font-size: $final-screen-message-font-size-desktop;
+  margin-bottom: 60px;
+}
+
+.final-screen__moves,
+.final-screen__timer {
+  font-size: $final-screen-moves-timer-font-size-desktop;
+}
+
+.moveLeft {
+  transform: translateX(calc(-100% - #{$gap}));
+}
+
+.moveRight {
+  transform: translateX(calc(100% + #{$gap}));
+}
+
+.moveUp {
+  transform: translateY(calc(-100% - #{$gap}));
+}
+
+.moveDown {
+  transform: translateY(calc(100% + #{$gap}));
+}
+
+@media screen and (max-width: 1280px) {
+  .field {
+    width: $field-size-tablet;
+    height: $field-size-tablet;
+  }
+
+  .chip {
+    font-size: $chip-font-size-tablet;
+  }
+
+  .control-panel {
+    width: $field-size-tablet;
+    height: $control-panel-height-tablet;
+  }
+
+  .autocomplete-button,
+  .new-game-button {
+    width: $buttons-width-tablet;
+    height: $buttons-height-tablet;
+    font-size: $buttons-font-size-tablet;
+  }
+
+  .moves-counter {
+    width: $moves-counter-width-tablet;
+    height: $moves-counter-height-tablet;
+    font-size: $moves-counter-font-size-tablet;
+  }
+
+  .timer {
+    width: $timer-width-tablet;
+    height: $timer-height-tablet;
+    font-size: $timer-font-size-tablet;
+  }
+
+  .final-screen {
+    width: $field-size-tablet;
+    height: $field-size-tablet;
+  }
+  
+  .final-screen__message {
+    font-size: $final-screen-message-font-size-tablet;
+    margin-bottom: 60px;
+  }
+  
+  .final-screen__moves,
+  .final-screen__timer {
+    font-size: $final-screen-moves-timer-font-size-tablet;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .field {
+    width: $field-size-mobile;
+    height: $field-size-mobile;
+  }
+
+  .chip {
+    font-size: $chip-font-size-mobile;
+  }
+
+  .control-panel {
+    width: $field-size-mobile;
+    height: $control-panel-height-mobile;
+  }
+
+  .autocomplete-button,
+  .new-game-button {
+    width: $buttons-width-mobile;
+    height: $buttons-height-mobile;
+    font-size: $buttons-font-size-mobile;
+  }
+
+  .moves-counter {
+    width: $moves-counter-width-mobile;
+    height: $moves-counter-height-mobile;
+    font-size: $moves-counter-font-size-mobile;
+  }
+
+  .timer {
+    width: $timer-width-mobile;
+    height: $timer-height-mobile;
+    font-size: $timer-font-size-mobile;
+  }
+
+  .final-screen {
+    width: $field-size-mobile;
+    height: $field-size-mobile;
+  }
+  
+  .final-screen__message {
+    font-size: $final-screen-message-font-size-mobile;
+    margin-bottom: 40px;
+  }
+  
+  .final-screen__moves,
+  .final-screen__timer {
+    font-size: $final-screen-moves-timer-font-size-mobile;
+  }
+}
