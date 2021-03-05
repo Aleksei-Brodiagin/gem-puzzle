@@ -198,7 +198,7 @@ body {
   transform: translateY(calc(100% + #{$gap}));
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
   .field {
     width: $field-size-tablet;
     height: $field-size-tablet;
@@ -248,7 +248,57 @@ body {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
+  .field {
+    width: $field-size-mobile;
+    height: $field-size-mobile;
+  }
+
+  .chip {
+    font-size: $chip-font-size-mobile;
+  }
+
+  .control-panel {
+    width: $field-size-mobile;
+    height: $control-panel-height-mobile;
+  }
+
+  .autocomplete-button,
+  .new-game-button {
+    width: $buttons-width-mobile;
+    height: $buttons-height-mobile;
+    font-size: $buttons-font-size-mobile;
+  }
+
+  .moves-counter {
+    width: $moves-counter-width-mobile;
+    height: $moves-counter-height-mobile;
+    font-size: $moves-counter-font-size-mobile;
+  }
+
+  .timer {
+    width: $timer-width-mobile;
+    height: $timer-height-mobile;
+    font-size: $timer-font-size-mobile;
+  }
+
+  .final-screen {
+    width: $field-size-mobile;
+    height: $field-size-mobile;
+  }
+  
+  .final-screen__message {
+    font-size: $final-screen-message-font-size-mobile;
+    margin-bottom: 40px;
+  }
+  
+  .final-screen__moves,
+  .final-screen__timer {
+    font-size: $final-screen-moves-timer-font-size-mobile;
+  }
+}
+
+@media screen and (orientation: landscape) {
   .field {
     width: $field-size-mobile;
     height: $field-size-mobile;
